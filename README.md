@@ -35,9 +35,7 @@ TODO Screenshot
 
 With the configuration provided, the App will iterate over the provided `pipelineIds` and call the Azure DevOps API with the PAT provided.
 
-You can learn about the Azure DevOps API here: https://learn.microsoft.com/en-us/rest/api/azure/devops/pipelines/runs?view=azure-devops-rest-7.1.
-
-TODO or: https://learn.microsoft.com/en-us/rest/api/azure/devops/build/builds/list?view=azure-devops-rest-7.1
+You can learn about the Azure DevOps API here: https://learn.microsoft.com/en-us/rest/api/azure/devops/build/builds/list?view=azure-devops-rest-7.1
 
 ### But isn't sending a PAT via URL parameter insecure?!?
 

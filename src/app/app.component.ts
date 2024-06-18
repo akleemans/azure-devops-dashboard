@@ -80,7 +80,7 @@ export class AppComponent {
     const pat = ':' + this.PAT
     const headers = {'Authorization': 'Basic ' + btoa(pat)};
     for (const pipelineId of this.pipelineIds) {
-      // const url = `https://dev.azure.com/${this.organization}/${this.project}/_apis/pipelines/${pipelineId}/runs?api-version=7.1-preview.1`;
+      // Old URL: `https://dev.azure.com/${this.organization}/${this.project}/_apis/pipelines/${pipelineId}/runs?api-version=7.1-preview.1`;
       const url = `https://dev.azure.com/${this.organization}/${this.project}/_apis/build/builds?api-version=7.1-preview.7&definitions=${pipelineId}&branchName=${this.branchName}&statusFilter=completed`;
       this.httpClient.get(url, {headers}).subscribe((response: any) => {
         const tileConfig = this.mapPipelineRuns(response.value as BuildDto[]);
