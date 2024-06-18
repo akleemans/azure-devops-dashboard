@@ -6,7 +6,7 @@ TODO Screenshot
 
 ## Usage
 
-The dashboard works by opening the App via GitHub.io link (`http://akleemans.github.io/azure-devops-dashboard/`) with configuration parameters.
+The dashboard works by opening the App via GitHub.io link (`https://akleemans.github.io/azure-devops-dashboard/`) with configuration parameters.
 
 You will need to pass the following parameters:
 
