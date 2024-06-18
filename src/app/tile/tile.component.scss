@@ -1,0 +1,12 @@
+.tile {
+  width: 360px;
+  height: 250px;
+
+  &.failed {
+    background-color: rgba(255, 0, 0, 0.35);
+  }
+}
+
+.demo-chart {
+  height: 200px;
+}

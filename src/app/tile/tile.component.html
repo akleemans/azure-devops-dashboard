@@ -1,0 +1,13 @@
+<mat-card class="tile" [ngClass]="tileConfig.result">
+  <mat-card-header>
+    <mat-card-title>
+      {{ tileConfig.name }}
+      <span *ngIf="tileConfig.result === 'succeeded'">✅</span>
+      <span *ngIf="tileConfig.result === 'failed'">❌</span>
+    </mat-card-title>
+    <mat-card-subtitle>{{ tileConfig.runtime }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <div echarts [options]="chartOption" class="demo-chart"></div>
+  </mat-card-content>
+</mat-card>

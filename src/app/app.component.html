@@ -1,0 +1,10 @@
+<h2>Azure DevOps Dashboard</h2>
+<div *ngIf="isLoading" class="spinner-container">
+  <mat-spinner></mat-spinner>
+</div>
+<section *ngIf="!isLoading && tileConfigs.length > 0" class="container">
+  <app-tile *ngFor="let tileConfig of tileConfigs" [tileConfig]="tileConfig"></app-tile>
+</section>
+<div *ngIf="!isLoading && tileConfigs.length === 0">
+  No configuration provided, please see Readme on Github on how to use: <a href="TODO"></a>
+</div>
