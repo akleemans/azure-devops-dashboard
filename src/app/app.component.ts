@@ -3,7 +3,7 @@ import {ActivatedRoute, RouterOutlet} from '@angular/router';
 import {TileComponent} from "./tile/tile.component";
 import {HttpClient} from "@angular/common/http";
 import {NgForOf, NgIf} from "@angular/common";
-import {intervalToDuration, parseJSON} from "date-fns";
+import {intervalToDuration, parseJSON, setISODay} from "date-fns";
 import {MatProgressSpinner} from "@angular/material/progress-spinner";
 
 export class TileConfig {
@@ -46,6 +46,7 @@ export interface BuildDto {
 export class AppComponent {
   public isLoading = true;
   public tileConfigs: TileConfig[] = [];
+  public refreshIntervalMs = 5 * 60 * 1000;
 
   private PAT = '';
   private organization = '';
@@ -61,18 +62,21 @@ export class AppComponent {
       if (!params['pat'] || !params['organization'] || !params['project'] || !params['pipelineIds']) {
         this.isLoading = false;
       } else {
-        this.isLoading = true;
         this.PAT = params['pat'];
         this.organization = params['organization'];
         this.project = params['project'];
         this.pipelineIds = params['pipelineIds'].split(',');
-        console.log(this.pipelineIds); // Print the parameter to the console
+        setInterval(() => this.loadData(), this.refreshIntervalMs);
         this.loadData();
       }
     });
   }
 
   public loadData(): void {
+    console.log('Fetching data...');
+    this.isLoading = true;
+    this.tileConfigs = [];
+
     const pat = ':' + this.PAT
     const headers = {'Authorization': 'Basic ' + btoa(pat)};
     for (const pipelineId of this.pipelineIds) {
@@ -115,7 +119,7 @@ export class AppComponent {
       let result = run.result;
 
       // @ts-ignore
-      let runtimeMin: number = duration['minutes'];
+      let runtimeMin: number = duration['minutes'] + Math.random() * 60;
       // @ts-ignore
       if (duration['hours'] > 0) {
         // Simplify to 1 hour max.
@@ -123,7 +127,6 @@ export class AppComponent {
       }
       entries.push({result, runtime, runtimeMin})
     }
-    console.log('config for', runs[0].definition.name, 'entries:', entries);
 
     return new TileConfig(runs[0].definition.name, entries[0].result, entries[0].runtime, entries);
   }

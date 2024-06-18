@@ -2,7 +2,7 @@
 
 A simple Azure DevOps dashboard to show a collection of pipeline status & history using [Apache ECharts](https://echarts.apache.org/en/index.html).
 
-TODO Screenshot
+![Screenshot](screenshot.png)
 
 ## Usage
 
@@ -18,6 +18,8 @@ You will need to pass the following parameters:
 So a complete URL would look like this:
 
     http://akleemans.github.io/azure-devops-dashboard/?pat=3dsfhjkh&organization=myorg&project=myproject&pipelineIds=16,25,35
+
+The dashboard updates (re-fetches) the pipeline data every 5 minutes by default.
 
 ### Generating a Personal Access Token
 

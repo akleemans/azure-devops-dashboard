@@ -79,9 +79,7 @@ export class TileComponent implements OnChanges {
       }
       while (bars.length < 11) {
         bars.splice(1, 0, [0, 0, bars.length]);
-        // bars.unshift();
       }
-      console.log('setting', bars, 'for', this.tileConfig.name);
       // @ts-ignore
       this.chartOption.dataset.source = bars;
     }
