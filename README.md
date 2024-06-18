@@ -42,7 +42,7 @@ TODO or: https://learn.microsoft.com/en-us/rest/api/azure/devops/build/builds/li
 ### But isn't sending a PAT via URL parameter insecure?!?
 
 Well... it depends. It has the [same exposure risk as the rest of the HTTP request (like headers or request body)](https://stackoverflow.com/a/66548278) when it is sent unencrypted.
-However, it should be secured [in transit when using SSL](https://security.stackexchange.com/a/12533).
+However, it should be secured [in transit when using SSL](https://security.stackexchange.com/a/12533), which is the case when using the GitHub.io-link above.
 
 That being said, there will be more traces (compared to i.e. POST request), for example [in Browser history or logs on a webserver](https://security.stackexchange.com/a/29605).
 
